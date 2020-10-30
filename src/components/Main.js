@@ -29,4 +29,6 @@ function Main({onEditProfile, onAddPlace, onEditAvatar}) {
   );
 }
 
+// TODO: Сделал открытие попапов, дальше закрытие попапов
+
 export default Main;

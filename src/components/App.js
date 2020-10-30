@@ -19,12 +19,20 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
+  function closeAllPopups() {
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+  }
 
   return (
     <>
       <div className="page">
         <Header />
-        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} />
+        <Main 
+          onEditProfile={handleEditProfileClick} 
+          onAddPlace={handleAddPlaceClick} 
+          onEditAvatar={handleEditAvatarClick} />
         <Footer />
       </div>
 
@@ -32,17 +40,20 @@ function App() {
         name="edit"
         title="Редактировать профиль"
         children=""
-        isOpen={isEditProfilePopupOpen} />
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}  />
       <PopupWithForm 
         name="add"
         title="Новое место"
         children=""
-        isOpen={isAddPlacePopupOpen} />
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}  />
       <PopupWithForm 
         name="avatar"
         title="Обновить аватар"
         children=""
-        isOpen={isEditAvatarPopupOpen} />
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}  />
         
     {/* Templates */}
       <template id="grid-item">
