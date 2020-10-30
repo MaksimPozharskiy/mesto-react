@@ -3,7 +3,7 @@ import Card from './Card';
 import editAvatar from '../images/editAvatar.svg';
 import api from '../utils/api.js';
 
-function Main({onEditProfile, onAddPlace, onEditAvatar}) {
+function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 
   React.useEffect(() => {
     api.getUserInfo().then((data) => {
@@ -46,7 +46,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar}) {
 
       <section className="photos">
         <ul className="grid-photos">
-          {cards.map(({_id, ...props}) => <Card  key={_id} {...props} />)}
+          {cards.map((card) => <Card  key={card._id} card={card} onCardClick={onCardClick} />)}
         </ul>
       </section>
     </main>
