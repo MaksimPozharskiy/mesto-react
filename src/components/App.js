@@ -50,9 +50,9 @@ function App() {
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}>
           <input minLength="2" maxLength="40" type="text" className="popup__input popup__input_name_name" name="name" id="name-input" placeholder="Имя" defaultValue="Максим Хорс" required />
-          <span className='popup__input-error popup__input-error_active' id='name-input-error'></span>
+          <span className='popup__input-error popup__input-error_active' id='name-input-error' />
           <input minLength="2" maxLength="200" type="text" className="popup__input popup__input_name_profession" name="profession" placeholder="Вид деятельности" id="profession-input" defaultValue="Конный спортсмен" required />
-          <span className='popup__input-error popup__input-error_active' id='profession-input-error'></span>
+          <span className='popup__input-error popup__input-error_active' id='profession-input-error' />
           <input type="submit" className="popup__button-save" defaultValue="Сохранить" name="submit" />
         </PopupWithForm>
       <PopupWithForm 

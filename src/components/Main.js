@@ -36,12 +36,12 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
             <div className="profile__info">
               <div className="profile__wrap">
                 <h1 className="profile__name">{userName}</h1>
-                <button type="button" className="profile__edit-button" onClick={onEditProfile}></button>
+                <button type="button" className="profile__edit-button" onClick={onEditProfile} />
               </div>
               <p className="profile__profession">{userDescription}</p>
             </div>
           </div>
-          <button type="button" className="profile__add-button" onClick={onAddPlace}></button>
+          <button type="button" className="profile__add-button" onClick={onAddPlace} />
       </section>
 
       <section className="photos">

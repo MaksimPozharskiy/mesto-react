@@ -7,7 +7,7 @@ function PopupWithForm({name, title, children, isOpen, onClose}) {
           <form className="popup__form" name={name} noValidate>
             {children}
           </form>
-          <button type="button" className="popup__button-close" onClick={onClose}></button>
+          <button type="button" className="popup__button-close" onClick={onClose} />
         </div>
       </div>
   );
