@@ -4,6 +4,7 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
+import EditProfilePopup from './EditProfilePopup';
 import api from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -52,44 +53,7 @@ function App() {
         }
         <Footer />
       </div>
-
-      <PopupWithForm 
-        name="edit"
-        title="Редактировать профиль"
-        isOpen={isEditProfilePopupOpen}
-        onClose={closeAllPopups}>
-          <input 
-            minLength="2" 
-            maxLength="40" 
-            type="text" 
-            className="popup__input popup__input_name_name" 
-            name="name" 
-            id="name-input" 
-            placeholder="Имя" 
-            defaultValue="Максим Хорс" 
-            required />
-          <span 
-            className='popup__input-error popup__input-error_active' 
-            id='name-input-error' />
-          <input 
-            minLength="2" 
-            maxLength="200" 
-            type="text" 
-            className="popup__input popup__input_name_profession" 
-            name="profession" 
-            placeholder="Вид деятельности" 
-            id="profession-input" 
-            defaultValue="Конный спортсмен" 
-            required />
-          <span 
-            className='popup__input-error popup__input-error_active' 
-            id='profession-input-error' />
-          <input 
-            type="submit" 
-            className="popup__button-save" 
-            defaultValue="Сохранить" 
-            name="submit" />
-        </PopupWithForm>
+      <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} /> 
       <PopupWithForm 
         name="add"
         title="Новое место"
