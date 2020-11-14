@@ -5,6 +5,7 @@ import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
 import api from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -49,7 +50,13 @@ function App() {
         setCurrentUser({ ...updatedUser });
       setIsEditProfilePopupOpen(false);
     });
+  }
 
+  function handleUpdateAvatar({avatar}) {
+    api.editUserAvatar(avatar).then((updatedUser) => {
+      setCurrentUser(updatedUser);
+      setIsEditAvatarPopupOpen(false);
+    })
   }
 
   return (
@@ -105,31 +112,17 @@ function App() {
             value="Создать" 
             name="submit" />
         </PopupWithForm>
-      <PopupWithForm 
-        name="avatar"
-        title="Обновить аватар"
-        children=""
-        isOpen={isEditAvatarPopupOpen}
-        onClose={closeAllPopups}>
-          <input 
-            type="url" 
-            placeholder="Ссылка на картинку" 
-            className="popup__input popup__input_name_link-avatar" 
-            name="avatar-input" 
-            id="avatar-input" 
-            required />
-          <span 
-            className='popup__input-error' 
-            id='avatar-input-error'>Заполните это поле.</span>
-          <input 
-            type="submit" 
-            className="popup__button-save" 
-            value="Сохранить" 
-            name="submit" />
-        </PopupWithForm>
+        {currentUser &&
+          <EditAvatarPopup 
+            isOpen={isEditAvatarPopupOpen} 
+            onClose={closeAllPopups}
+            onUpdateAvatar={handleUpdateAvatar}   
+          /> 
+        }
       <ImagePopup 
         card={selectedCard} 
-        onClose={closeAllPopups} />
+        onClose={closeAllPopups}
+      />
     </CurrentUserContext.Provider>
   );
 }
