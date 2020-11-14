@@ -24,11 +24,18 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
     // Отправляем запрос в API и получаем обновлённые данные карточки
     const changeLike = isLiked ? api.unlikeCard(card._id) : api.likeCard(card._id)
     changeLike.then((newCard) => {
-    // Формируем новый массив на основе имеющегося, подставляя в него новую карточку
-    const newCards = cards.map((c) => c._id === card._id ? newCard : c);
-    // Обновляем стейт
-    setCards(newCards);
-  });
+      // Формируем новый массив на основе имеющегося, подставляя в него новую карточку
+      const newCards = cards.map((c) => c._id === card._id ? newCard : c);
+      // Обновляем стейт
+      setCards(newCards);
+    });
+  }
+
+  function handleCardDelete(card) {
+    api.deleteCard(card._id).then(() => {
+      const newCards = cards.filter((c) => c._id !== card._id);
+      setCards(newCards);
+    })
   }
 
   return (
@@ -56,7 +63,8 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
             key={card._id} 
             card={card} 
             onCardClick={onCardClick}
-            onCardLike={handleCardLike}/>
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}/>
           )}
         </ul>
       </section>

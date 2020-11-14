@@ -2,7 +2,7 @@ import deleteIcon from '../images/delete-icon.svg';
 import React from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-function Card({card, onCardClick, onCardLike}) {
+function Card({card, onCardClick, onCardLike, onCardDelete}) {
 
   // Контекст
   const currentUser = React.useContext(CurrentUserContext);
@@ -28,9 +28,13 @@ function Card({card, onCardClick, onCardLike}) {
     onCardLike(card);
   }
 
+  function handleDeleteClick() {
+    onCardDelete(card);
+  }
+
   return (
     <li className="grid-item">
-      <img src={deleteIcon} alt="Удаление карточки" className={cardDeleteButtonClassName} />
+      <img src={deleteIcon} alt="Удаление карточки" className={cardDeleteButtonClassName} onClick={handleDeleteClick} />
       <img src={card.link} alt={card.name} className="grid-item__image" onClick={handleClick} />
       <div className="grid-item__wrap">
         <h3 className="grid-item__name">{card.name}</h3>
