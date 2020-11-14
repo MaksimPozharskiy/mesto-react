@@ -40,6 +40,18 @@ function App() {
     setSelectedCard(false);
   }
 
+  function handleUpdateUser({name, about}) {
+    api.editUserInfo(name, about).then(() => {
+      const updatedUser = { ...currentUser };
+        updatedUser.name = name;
+        updatedUser.about = about;
+
+        setCurrentUser({ ...updatedUser });
+      setIsEditProfilePopupOpen(false);
+    });
+
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -53,7 +65,13 @@ function App() {
         }
         <Footer />
       </div>
-      <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} /> 
+      {currentUser &&
+        <EditProfilePopup 
+          isOpen={isEditProfilePopupOpen} 
+          onClose={closeAllPopups} 
+          onUpdateUser={handleUpdateUser}
+          /> 
+      }
       <PopupWithForm 
         name="add"
         title="Новое место"
