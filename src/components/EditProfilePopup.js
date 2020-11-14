@@ -39,9 +39,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
             id="name-input" 
             placeholder="Имя" 
             defaultValue="Максим Хорс" 
-            onChange={(evt) => {
-                setName(evt.target.value);
-              }}
+            onChange={(evt) => setName(evt.target.value)}
             required
             value={name} />
           <span 
@@ -56,9 +54,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
             placeholder="Вид деятельности" 
             id="profession-input" 
             defaultValue="Конный спортсмен" 
-            onChange={(evt) => {
-                setDescription(evt.target.value);
-              }}
+            onChange={(evt) => setDescription(evt.target.value)}
             required
             value={description} />
           <span 
