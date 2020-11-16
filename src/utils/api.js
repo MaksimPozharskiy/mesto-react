@@ -7,8 +7,7 @@ class Api {
   // Получить начальные карточки
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {headers: this._headers})
-    .then(response => this._checkRequestResult(response))
-    .catch(error => this._errorHandler(error));
+    .then(response => this._checkRequestResult(response));
   }
 
   // Добавление новой карточки на сервер
@@ -21,8 +20,7 @@ class Api {
         link: link
       })
     })
-    .then(response => this._checkRequestResult(response))
-    .catch(error => this._errorHandler(error));
+    .then(response => this._checkRequestResult(response));
   }
 
   // Удалить карточку
@@ -31,8 +29,7 @@ class Api {
       method: 'DELETE',
       headers: this._headers,
     })
-    .then(response => this._checkRequestResult(response))
-    .catch(error => this._errorHandler(error));
+    .then(response => this._checkRequestResult(response));
   }
 
   // Постановка лайка карточке
@@ -41,8 +38,7 @@ class Api {
       method: 'PUT',
       headers: this._headers,
     })
-    .then(response => this._checkRequestResult(response))
-    .catch(error => this._errorHandler(error));
+    .then(response => this._checkRequestResult(response));
   }
 
   // Удаление лайка карточке
@@ -51,15 +47,13 @@ class Api {
       method: 'DELETE',
       headers: this._headers,
     })
-    .then(response => this._checkRequestResult(response))
-    .catch(error => this._errorHandler(error));
+    .then(response => this._checkRequestResult(response));
   }
   
   // Получить данные пользователя
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {headers: this._headers})
-    .then(response => this._checkRequestResult(response))
-    .catch(error => this._errorHandler(error));
+    .then(response => this._checkRequestResult(response));
   }
 
   // Отредактировать данные пользователя
@@ -72,8 +66,7 @@ class Api {
         about: profession
       })
     })
-    .then(response => this._checkRequestResult(response))
-    .catch(error => this._errorHandler(error));
+    .then(response => this._checkRequestResult(response));
   }
 
   // Отредактировать аватар пользователя
@@ -86,8 +79,7 @@ class Api {
         avatar: urlAvatar
       })
     })
-    .then(response => this._checkRequestResult(response))
-    .catch(error => this._errorHandler(error));
+    .then(response => this._checkRequestResult(response));
   }
 
   _checkRequestResult(response) {
@@ -97,7 +89,7 @@ class Api {
     return Promise.reject(`Возникла ошибка: ${response.status}`); 
   }
 
-  _errorHandler(error) {
+  errorHandler(error) {
     console.log(error);
   }
 }
