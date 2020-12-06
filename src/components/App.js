@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -101,6 +101,19 @@ function App() {
     })
     .catch(error => api.errorHandler(error));
   }
+
+  useEffect(() => {
+    function hadleEscClose(evt) {
+      if (evt.key === "Escape") {
+        closeAllPopups();
+      }
+    }
+
+    document.addEventListener('keydown', hadleEscClose);
+    return () => {
+      document.removeEventListener('keydown', hadleEscClose);
+    }
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
